@@ -12,5 +12,6 @@
 	<depend>roscpp</depend>
 	<depend>roslib</depend>
 	<depend>tf</depend>
+	<depend>resource_retriever</depend>
 	<test_depend>catch2</test_depend>
 </package>
