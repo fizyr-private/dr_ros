@@ -9,8 +9,8 @@
 	<buildtool_depend>catkin</buildtool_depend>
 	<depend>dr_log</depend>
 	<depend>dr_param</depend>
-	<depend>dr_ros</depend>
 	<depend>dr_util</depend>
+	<depend>dr_separate_objects</depend>	
 	<depend>roscpp</depend>
 	<depend>roslib</depend>
 	<depend>tf</depend>
