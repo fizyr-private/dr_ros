@@ -12,6 +12,7 @@
 	<depend>dr_util</depend>
 	<depend>roscpp</depend>
 	<depend>roslib</depend>
+	<depend>rospack</depend>
 	<depend>tf</depend>
 	<test_depend>catch2</test_depend>
 </package>
