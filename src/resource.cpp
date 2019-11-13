@@ -8,10 +8,34 @@
 #include <algorithm>
 #include <stdexcept>
 #include <iostream>
+#include <cstdio>
+#include <iostream>
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <array>
+#include <vector>
+#include <map>
+
+std::string exec(const char* cmd) {
+    std::array<char, 128> buffer;
+    std::string result;
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
+    if (!pipe) {
+        throw std::runtime_error("popen() failed!");
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+        result += buffer.data();
+    }
+    return result;
+}
 
 namespace dr {
 
 std::string getPathX(const std::string& package_name) {
+
+	std::string result = exec("rospack find dr_ros");
+	std::cout << "exec result:'" << result << "'\n";
 
 	std::string path = ros::package::command("find " + package_name);
 
