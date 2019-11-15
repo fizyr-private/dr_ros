@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
 	dr_param
 	roscpp
 	roslib
+	rospack
 	tf
 )
 
