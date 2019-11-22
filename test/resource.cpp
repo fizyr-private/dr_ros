@@ -7,19 +7,21 @@
 // Catch2
 #include <catch2/catch.hpp>
 
-// C++
-#include <iostream>
-
 namespace dr {
 
 TEST_CASE("ResourceTest -- packageUrl", "packageUrl") {
-	// REQUIRE(ros::package::getPath("dr_ros") + "/test.file" == resolveResourceUrl("package://dr_ros/test.file"));
-	std::string first = ros::package::getPath("dr_ros") + "/test.file";
-	std::cout << "first:'" << first << "'\n";
-
-	std::string second = resolveResourceUrl("package://dr_ros/test.file");
-	std::cout << "second:'" << second << "'\n";	
-	REQUIRE(first == second);
+	/**
+	 * TODO: This test fails in BuildBot because it can not resolve the location
+	 *       of the "package://some_package". At the end of a chain of calls,
+	 *       'ROSPack::run(..)' excecutes "rospack find some_package".
+	 * 
+	 *       More about this method.
+	 *       http://docs.ros.org/indigo/api/rospack/html/rospack__backcompat_8cpp_source.html		 * 
+	 * 
+	 *       This method succeeds if rospack is installed and located in the PATH.
+	 *       In BuildBot test-container rospack is installed, but its location is not in the PATH.
+	 **/
+	REQUIRE(ros::package::getPath("dr_ros") + "/test.file" == resolveResourceUrl("package://dr_ros/test.file"));
 }
 
 TEST_CASE("ResourceTest -- localFileUrl", "localFileUrl") {
