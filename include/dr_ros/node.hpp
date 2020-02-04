@@ -44,8 +44,12 @@ protected:
 	 * If the parameter doesn't exist on the parameter server, an exception is thrown.
 	 */
 	template<typename T>
+	[[deprecated("Using the ROS parameter server is a bad idea. Consider using something else.")]]
 	T getParam(std::string const & name) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 		return dr::getParam<T>(*this, name);
+#pragma GCC diagnostic pop
 	}
 
 	/// Get a parameter from the ROS parameter server.
@@ -53,8 +57,12 @@ protected:
 	 * If the parameter doesn't exist on the parameter server, the fallback is returned.
 	 */
 	template<typename T>
+	[[deprecated("Using the ROS parameter server is a bad idea. Consider using something else.")]]
 	T getParam(std::string const & name, T const & fallback, bool warn = true) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 		return dr::getParam<T>(*this, name, fallback, warn);
+#pragma GCC diagnostic pop
 	}
 
 	/// Get a list of parameters from the ROS parameter server.
@@ -62,8 +70,12 @@ protected:
 	 * If the parameters do not exist on the parameter server, an exception is thrown.
 	 */
 	template<typename T>
+	[[deprecated("Using the ROS parameter server is a bad idea. Consider using something else.")]]
 	std::vector<T> getParamList(std::string const & name) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 		return dr::getParamList<T>(*this, name);
+#pragma GCC diagnostic pop
 	}
 
 	/// Get a list of parameters from the ROS parameter server.
@@ -71,16 +83,24 @@ protected:
 	 * If the parameters do not exist on the parameter server, the fallback is returned.
 	 */
 	template<typename T>
+	[[deprecated("Using the ROS parameter server is a bad idea. Consider using something else.")]]
 	std::vector<T> getParamList(std::string const & name, T const & fallback, bool warn = true) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 		return dr::getParamList<T>(*this, name, fallback, warn);
+#pragma GCC diagnostic pop
 	}
 
 	/// Search for a parameter up the namespace hierarchy and return it's value.
 	template<typename T>
+	[[deprecated("Using the ROS parameter server is a bad idea. Consider using something else.")]]
 	T searchParam(std::string const & name, T const & fallback, bool warn = true) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 		std::string key;
 		if (!ros::NodeHandle::searchParam(name, key)) return fallback;
 		return getParam<T>(key, fallback, warn);
+#pragma GCC diagnostic pop
 	}
 
 	/// Dispatch a callback for later invocation.
