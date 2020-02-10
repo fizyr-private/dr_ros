@@ -69,7 +69,10 @@ Node::Node() : ros::NodeHandle("~") {
 
 	std::string node_name = namespaceToName(this->getNamespace());
 	std::string fallback  = getHomeDirectory(".") + "/.ros/run/" + formatTime(now, "%Y-%m-%d/%H-%M-%S");
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 	run_prefix_           = searchParam<std::string>("run_prefix", fallback);
+#pragma GCC diagnostic pop
 	node_prefix_          = run_prefix_   + "/" + node_name;
 	std::string log_file  = node_prefix_  + "/" + node_name + ".log";
 
