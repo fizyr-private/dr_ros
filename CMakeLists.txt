@@ -20,7 +20,7 @@ find_package(Boost REQUIRED COMPONENTS filesystem)
 catkin_package(
 	INCLUDE_DIRS include
 	LIBRARIES ${PROJECT_NAME}
-	CATKIN_DEPENDS dr_log dr_param
+	CATKIN_DEPENDS dr_log dr_param roscpp
 )
 
 include_directories(include/${PROJECT_NAME})
