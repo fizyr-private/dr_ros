@@ -1,9 +1,21 @@
+// This repository
 #include "resource.hpp"
 
+// ROS
 #include <ros/package.h>
 
+// C++
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
+#include <cstdio>
+#include <iostream>
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <array>
+#include <vector>
+#include <map>
 
 namespace dr {
 
